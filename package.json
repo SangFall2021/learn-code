@@ -1,0 +1,8 @@
+{
+  "name": "learn-code",
+  "version": "1.0.0",
+  "main": "main.js",
+  "repository": "https://github.com/SangFall2021/learn-code.git",
+  "author": "SangFall <sangfall@qq.com>",
+  "license": "MIT"
+}
