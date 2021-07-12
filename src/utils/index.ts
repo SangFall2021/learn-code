@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export const isFalsy = (value: any) => (value === 0 ? false : !value);
+export const isFalsy = (value: unknown) => (value === 0 ? false : !value);
 
 export const clearnObj = (object: object) => {
   const result = { ...object };
@@ -23,7 +23,7 @@ export const useMount = (callback: () => void) => {
   }, []);
 };
 
-export const useDebounce = (value: any, delay?: number) => {
+export const useDebounce = <V>(value: V, delay?: number) => {
   const [debounceValue, setDebounceValue] = useState(value);
 
   useEffect(() => {
@@ -34,4 +34,28 @@ export const useDebounce = (value: any, delay?: number) => {
   }, [value, delay]);
 
   return debounceValue;
+};
+
+export const useArray = <T>(array: T[]) => {
+  const [value, setValue] = useState(array);
+
+  const add = (obj: T) => {
+    setValue([...value, obj]);
+  };
+
+  const removeIndex = (index: number) => {
+    const assignValue = [...value];
+    assignValue.splice(index, 1);
+    setValue(assignValue);
+  };
+
+  const clear = () => setValue([]);
+
+  return {
+    value,
+    setValue,
+    clear,
+    add,
+    removeIndex,
+  };
 };

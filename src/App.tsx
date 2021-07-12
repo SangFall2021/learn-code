@@ -1,13 +1,15 @@
-import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 
-import { ProjectListScreen } from "screens/project-list";
+// import { ProjectListScreen } from "screens/project-list";
+// import { TryUseArrayTest } from './try-use-array-test'
+import { LoginScreen } from "screens/login";
 
 function App() {
   return (
     <div className="App">
-      <ProjectListScreen />
+      {/* <ProjectListScreen /> */}
+      {/* <TryUseArrayTest /> */}
+      <LoginScreen />
     </div>
   );
 }
