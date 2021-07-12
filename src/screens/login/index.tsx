@@ -1,20 +1,10 @@
 import { FormEvent } from "react";
-
-const apiUrl = process.env.REACT_APP_API_URL;
+import { useAuth } from "context/auth-context";
 
 export const LoginScreen = () => {
-  const login = (params: { username: string; password: string }) => {
-    fetch(`${apiUrl}/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(params),
-    }).then(async (res) => {
-      if (res.ok) {
-      }
-    });
-  };
+  const { user, login } = useAuth();
+  console.log("useAuth().type: ", typeof useAuth());
+  console.log("useAuth(): ", useAuth());
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // 阻止默认行为
@@ -28,6 +18,7 @@ export const LoginScreen = () => {
 
   return (
     <form onSubmit={handleSubmit}>
+      {user ? <div>登录成功，登录用户名{user?.name}</div> : null}
       <div>
         <label htmlFor="username">账号</label>
         <input type="text" id="username" />
