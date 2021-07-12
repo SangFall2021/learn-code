@@ -1,3 +1,5 @@
+// "scripts": { "json-server": "json-server --watch __json_server_mock__/db.json --port 3001 --middlewares __json_server_mock__/middleware.js" }
+
 module.exports = (req, res, next) => {
   if (req.path === "/login" && req.method === "POST") {
     if (req.body.username === "admin" && req.body.password === "123456") {
